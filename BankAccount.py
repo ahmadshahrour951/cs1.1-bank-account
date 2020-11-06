@@ -117,3 +117,44 @@ class BankAccount:
         )
 
 
+def atm_terminal_intro():
+    """
+    This function is a helper. It is just used to print a nice welcoming message to translate and communicate instructions for the logic.
+    It also creates a bank account stance for the logic to use in the return statement.
+
+    Parameters:
+      - None.
+
+    Result:
+      - BankAccount Instance - OBJECT - an instance from the BankAccount class using user responses to required inputs.
+    """
+    # Welcome Message
+    print("Welcome to Make School's Virtual Bank!")
+    print("Let's get your account sorted.")
+    print()
+
+    # Grabbing the inputs to use for the BankAccount Instance
+    full_name = input("What's your full name? ")
+    account_number = "02105678"
+    routing_number = "98765432"
+    balance = float(input("Amount of first deposit? "))
+    print()
+
+    # Create the instance for the user
+    atm_user = BankAccount(full_name, account_number,
+                           routing_number, balance)
+
+    print(
+        "For security purposes, the following information will only be displayed once.")
+    print("Please keep note of them and save it somewhere safe.")
+    print("==========================================================")
+    print(f"Your assigned Account No.: {account_number}")
+    print(f"Your assigned Routing No.: {routing_number}")
+    atm_user.get_balance()
+    print("==========================================================")
+    print()
+
+    # Return the instance for the the logic.
+    return atm_user
+
+

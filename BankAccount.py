@@ -31,3 +31,12 @@ class BankAccount:
         print(f'Amount Deposited: ${amount:.2f}')
         self.print_receipt()
 
+    def atm_charge(self):
+        """
+        This method manipulates the self.balance instance variable to reflect an ATM service charge after a withdraw.
+
+        Return:
+          - None.
+        """
+        self.balance -= 2
+

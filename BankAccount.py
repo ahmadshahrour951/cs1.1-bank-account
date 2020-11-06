@@ -208,3 +208,20 @@ Enter one of the following:
             print()
 
 
+def atm_terminal():
+    """
+    This function is just mainly the index script to run the atm machine.
+
+    Parameters:
+      - None.
+
+    Return:
+      - None.
+    """
+    atm_user = atm_terminal_intro()
+    atm_interface(atm_user)
+
+
+# Invoke the fuinction
+atm_terminal()
+

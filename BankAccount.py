@@ -73,3 +73,28 @@ class BankAccount:
 
         self.print_receipt()
 
+    def get_balance(self):
+        """
+        This method only displays the latest and the most current balance of the bank account.
+
+        Parameters:
+          - None.
+
+        Return:
+          - None.
+        """
+        print(f'Your Current Balance: ${self.balance:.2f} ')
+        return self.balance
+
+    def add_interest(self):
+        """
+        This method manipulates the balance to incorporate an interest gain for the user.
+
+        Parameters:
+          - None.
+
+        Result:
+          - None.
+        """
+        self.balance += self.balance * 0.00083
+

@@ -98,3 +98,22 @@ class BankAccount:
         """
         self.balance += self.balance * 0.00083
 
+    def print_receipt(self):
+        """
+        This method prints a recipt of the balance. This is usally displayed in all times where the balance is being manipulated.
+
+        Parameters:
+          - None.
+
+        Result:
+          - None.
+        """
+        print(
+            f"""
+      {self._full_name}
+      Account No.: ****{self._account_number[-5:-1:1]}
+      Routing No.: {self._routing_number}
+      Balance: ${self.balance:.2f}"""
+        )
+
+

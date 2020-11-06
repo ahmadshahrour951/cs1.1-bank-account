@@ -40,3 +40,36 @@ class BankAccount:
         """
         self.balance -= 2
 
+    def withdraw(self, amount):
+        """
+        This method manipulates the self.balance instance variable to reflect a withdraw of cash.
+        This requires an atm charge, however if the user doesn't have enought money on the account there will be a $10 penelaty.
+        If the balance is positive, there will be a interest gain for the user.
+
+        Parameters:
+          - amount: FLOAT - The amount the user wants to withdraw.
+
+        Return:
+           - None.
+        """
+        if amount > self.balance:
+          #  Check if the amount requested exceeds the account balance. If so, deduct $10.
+            self.balance -= 10
+            print("Insufficient funds.")
+        else:
+          #   Otherwise, charge an atm_charge() and deduct the amount requsted from the current balance.
+            self.atm_charge()
+            self.balance -= amount
+            print(
+                f"""
+          ATM Charge: $2.00
+          Amount Withdrawn: ${amount:.2f}
+          """
+            )
+
+        if self.balance > 0:
+            # Since a positive balance in, everytime the user withdraws, I incur an interest on the balance, since we're using their money to loan to other people lol...
+            self.add_interest()
+
+        self.print_receipt()
+

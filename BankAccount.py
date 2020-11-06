@@ -16,3 +16,18 @@ class BankAccount:
         self._account_number = account_number
         self._routing_number = routing_number
         self.balance = balance
+
+    def deposit(self, amount):
+        """
+        This method manipulates the self.balance instance variable to reflect a deposit.
+
+        Parameters:
+          - amount: FLOAT - The amount the user wants to deposit.
+
+        Return:
+          - None.
+        """
+        self.balance += amount
+        print(f'Amount Deposited: ${amount:.2f}')
+        self.print_receipt()
+

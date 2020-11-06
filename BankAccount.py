@@ -225,3 +225,23 @@ def atm_terminal():
 # Invoke the fuinction
 atm_terminal()
 
+# Tests:
+joi = BankAccount('Joi Anderson', '02105678', '98765432', 100)
+joi.deposit(30)
+joi.get_balance()
+joi.withdraw(20)
+joi.print_receipt()
+
+ahmed = BankAccount('Ahmed Shahrour', '05155978', '98765432', 40)
+ahmed.deposit(50)
+ahmed.withdraw(20)
+joi.get_balance()
+ahmed.withdraw(600)
+ahmed.print_receipt()
+
+omar = BankAccount('Omar Gurashi', '09638698', '98765432', 0)
+omar.deposit(0)
+omar.withdraw(10)
+joi.get_balance()
+omar.deposit(120)
+omar.print_receipt()

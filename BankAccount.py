@@ -158,3 +158,53 @@ def atm_terminal_intro():
     return atm_user
 
 
+def atm_interface(user):
+    """
+    This function is a modularlized version of the logic and navigation for the user.
+    Hence, the name function name atm_interface.
+    The interface will ask for four options, based on the user's input, the logic will follow using an if conditional.
+
+    Parameters:
+      - user: OBJECT - a BankAccount instance for a user.
+
+    Return: 
+      - None
+    """
+
+    # The flag helps break out of the while loop
+    flag = True
+
+    # Ask user for commands indefninitely until E is pressed.
+    # Each command lands in a conditional.
+    while flag:
+        print()
+        print("What would you like to do?")
+        user_res = input("""
+Enter one of the following:
+    'D' to deposit money.
+    'W' to withdraw money.
+    'B' to display your current balance.
+    'E' to end your session
+""")
+
+        if user_res == 'D':
+            amount_deposit = float(input("Amount to deposit? "))
+            print()
+            user.deposit(amount_deposit)
+        elif user_res == 'W':
+            amount_withdraw = float(input("Amount to withdraw? "))
+            print()
+            user.withdraw(amount_withdraw)
+        elif user_res == 'B':
+            user.get_balance()
+            print()
+        elif user_res == 'E':
+            flag = False
+            print(
+                "Thank you for your visit. Below is your recepit for your session.")
+            user.print_receipt()
+        else:
+            print("Please enter a correct option.")
+            print()
+
+

@@ -88,7 +88,8 @@ class BankAccount:
 
     def add_interest(self):
         """
-        This method manipulates the balance to incorporate an interest gain for the user.
+        This method manipulates the balance to incorporate an interest gain for the user. The add_interest method adds interest to the users balance.
+        The annual interest rate is 1% (i.e. 0.083% per month). Thus, the monthly interest is calculated by the following equation: interest = balance *  0.00083 
 
         Parameters:
           - None.

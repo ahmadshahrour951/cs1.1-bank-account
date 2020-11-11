@@ -1,21 +1,23 @@
+from random import randrange
+
+
 class BankAccount:
-    def __init__(self, full_name, account_number, routing_number, balance=0):
+    def __init__(self, full_name, routing_number):
         """
         This method creates the bank account's instance variables from the given four parameters.
 
         Parameters:
           - full_name: STRING - The full name of the user.
-          - account_number: STRING - The account number of the bank account.
           - routing_number: STRING - The routing number of the bank account.
           - balance: FLOAT - The latest and current balance of the bank account.
 
         Return:
           - None.
         """
-        self._full_name = full_name
-        self._account_number = account_number
-        self._routing_number = routing_number
-        self.balance = balance
+        self.full_name = full_name
+        self.account_number = str(randrange(10000000, 100000000))
+        self.routing_number = routing_number
+        self.balance = 0
 
     def deposit(self, amount):
         """
@@ -107,11 +109,12 @@ class BankAccount:
         """
         print(
             f"""
-      {self._full_name}
-      Account No.: ****{self._account_number[-5:-1:1]}
-      Routing No.: {self._routing_number}
+      {self.full_name}
+      Account No.: ****{self.account_number[-5:-1:1]}
+      Routing No.: {self.routing_number}
       Balance: ${self.balance:.2f}"""
         )
+        print()
 
 
 def atm_terminal_intro():
@@ -132,21 +135,18 @@ def atm_terminal_intro():
 
     # Grabbing the inputs to use for the BankAccount Instance
     full_name = input("What's your full name? ")
-    account_number = "02105678"
     routing_number = "98765432"
-    balance = float(input("Amount of first deposit? "))
     print()
 
     # Create the instance for the user
-    atm_user = BankAccount(full_name, account_number,
-                           routing_number, balance)
+    atm_user = BankAccount(full_name, routing_number)
 
     print(
         "For security purposes, the following information will only be displayed once.")
     print("Please keep note of them and save it somewhere safe.")
     print("==========================================================")
-    print(f"Your assigned Account No.: {account_number}")
-    print(f"Your assigned Routing No.: {routing_number}")
+    print(f"Your assigned Account No.: {atm_user.account_number}")
+    print(f"Your assigned Routing No.: {atm_user.routing_number}")
     atm_user.get_balance()
     print("==========================================================")
     print()
@@ -183,18 +183,21 @@ Enter one of the following:
     'B' to display your current balance.
     'E' to end your session
 """)
-
+        # D stands for Deposit
         if user_res == 'D':
             amount_deposit = float(input("Amount to deposit? "))
             print()
             user.deposit(amount_deposit)
+        # W stands for Withdraw
         elif user_res == 'W':
             amount_withdraw = float(input("Amount to withdraw? "))
             print()
             user.withdraw(amount_withdraw)
+        # B stands for Balance
         elif user_res == 'B':
             user.get_balance()
             print()
+        # E stands for Exit, without this the application will not terminal
         elif user_res == 'E':
             flag = False
             print(
@@ -219,29 +222,34 @@ def atm_terminal():
     atm_interface(atm_user)
 
 
-# Invoke the fuinction
+# Invoke the function for terminal
 atm_terminal()
 
-# Tests:
-joi = BankAccount('Joi Anderson', '02105678', '98765432', 100)
+
+# Examples:
+joi = BankAccount('Joi Anderson', '98765432', 100)
 joi.deposit(30)
 joi.get_balance()
 joi.withdraw(20)
 joi.add_interest()
+joi.atm_charge()
 joi.print_receipt()
 
-ahmed = BankAccount('Ahmed Shahrour', '05155978', '98765432', 40)
+
+ahmed = BankAccount('Ahmed Shahrour', '98765432', 40)
 ahmed.deposit(50)
 ahmed.add_interest()
 ahmed.withdraw(20)
 ahmed.get_balance()
 ahmed.withdraw(600)
+ahmed.atm_charge()
 ahmed.print_receipt()
 
-omar = BankAccount('Omar Gurashi', '09638698', '98765432', 0)
+omar = BankAccount('Omar Gurashi', '98765432', 0)
 omar.deposit(0)
 omar.withdraw(10)
 omar.get_balance()
 omar.deposit(120)
 omar.add_interest()
+omar.atm_charge()
 omar.print_receipt()
